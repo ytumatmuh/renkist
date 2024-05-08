@@ -1,4 +1,5 @@
 import cv2
+import os
 
 vidcap = cv2.VideoCapture('video_data/vid.mp4')
 success, image = vidcap.read() 
@@ -12,3 +13,15 @@ while success:
 print('Toplam fotoğraf sayısı: ', count-1)
 
 vidcap.release()
+
+
+
+
+def delete_images():
+    directory = "image_data"
+    for filename in os.listdir(directory):
+        if filename.endswith(".jpg"):
+            os.remove(os.path.join(directory, filename))
+    print("Tüm fotoğraflar silindi.")
+    
+#delete_images() fotoları silmek için aktif et
